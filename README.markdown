@@ -29,7 +29,8 @@ you can achieve a similar affect using the 'tput' command.
 The components: 
 
 * scripts/ -- The scripts folder should be placed at ~/.ssh/scripts 
-    * changetheme.scpt -- An Applescript to retheme the currently active terminal tab
+    * changetheme.scpt -- An Applescript to retheme the currently active terminal tab. Takes the name of the 
+      theme as a command line parameter: <code>osascript changetheme.scpt Ocean</code>
     * wrapssh.sh -- This bash script should be aliased to 'ssh'. It will wrap the ssh call and run your commands at start and stop.
     * start\*.sh -- Example script for changing themes for integration and production environments
     * stop.sh -- Example script for changing the theme back
