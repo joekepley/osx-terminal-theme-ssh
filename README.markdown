@@ -21,7 +21,9 @@ at ~/.ssh/scripts/start\_[SSH HOSTNAME].sh, and run it if it exists. At the end 
 session, it will look for a script at ~/.ssh/scripts/stop\_[SSH HOSTNAME].sh, and run that
 as well. Note that the hostname is based on the command line you give to SSH, so if you
 nickname your servers in your SSH config, name your scripts based on the nickname rather
-than the real host name.
+than the real host name. You can 'return' anything from your start script by simply
+printing it to the console. The output will then be appended to the call of your stop
+script as parameters
 
 **Linux Users**: The example scripts use an Applescript to set the terminal theme, but 
 you can achieve a similar affect using the 'tput' command.
@@ -32,8 +34,8 @@ The components:
     * changetheme.scpt -- An Applescript to retheme the currently active terminal tab. Takes the name of the 
       theme as a command line parameter: <code>osascript changetheme.scpt Ocean</code>
     * wrapssh.sh -- This bash script should be aliased to 'ssh'. It will wrap the ssh call and run your commands at start and stop.
-    * start\*.sh -- Example script for changing themes for integration and production environments
-    * stop.sh -- Example script for changing the theme back
+    * start\*.sh -- Example script for changing themes for integration and production environments. It returns the terminal window id and the tab's tty to identify the tab
+    * stop.sh -- Example script for changing the theme back. If a window id and a tty name is input, the corresponding tab will be searched and reset. This allows for a reset of the theme for tabs in the background i.e. if you have a broken pipe
 
 ==========================
 Installing
